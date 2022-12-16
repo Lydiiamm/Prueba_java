@@ -18,21 +18,28 @@ public class Purchase_order {
     private int id_order;
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "customer")
+    @JsonIgnore
     private Customer customer;
     //Foreign key address
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "address")
+    @JsonIgnore
     private Address address;
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "paymentMethod")
+    @JsonIgnore
     private Payment_method paymentMethod;
     @Column(name="deliveryMethod", length=50, nullable=true, unique=false)
     private String deliveryMethod;
+    @Column(name="reference", length=50, nullable=true, unique=false)
+    private String reference;
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "paymentStatus")
+    @JsonIgnore
     private Payment_status paymentStatus;
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "orderStatus")
+    @JsonIgnore
     private Order_status orderStatus;
 
     @ManyToMany
@@ -45,11 +52,21 @@ public class Purchase_order {
     Set<Product_description> productDescription;
 
     public Purchase_order() {
-        super();
+
     }
 
 
-
+    public Purchase_order(int id_order, Customer customer, Address address, Payment_method paymentMethod, String deliveryMethod, String reference, Payment_status paymentStatus, Order_status orderStatus, Set<Product_description> productDescription) {
+        this.id_order = id_order;
+        this.customer = customer;
+        this.address = address;
+        this.paymentMethod = paymentMethod;
+        this.deliveryMethod = deliveryMethod;
+        this.reference = reference;
+        this.paymentStatus = paymentStatus;
+        this.orderStatus = orderStatus;
+        this.productDescription = productDescription;
+    }
 
     /**
      * Constructor of the class purchase_order
@@ -63,16 +80,7 @@ public class Purchase_order {
      */
 
 
-    public Purchase_order(int id_order, Customer customer, Address address, Payment_method paymentMethod, String deliveryMethod, Payment_status paymentStatus, Order_status orderStatus, Set<Product_description> productDescription) {
-        this.id_order = id_order;
-        this.customer = customer;
-        this.address = address;
-        this.paymentMethod = paymentMethod;
-        this.deliveryMethod = deliveryMethod;
-        this.paymentStatus = paymentStatus;
-        this.orderStatus = orderStatus;
-        this.productDescription = productDescription;
-    }
+
 
 
     public int getId_order() {
@@ -137,5 +145,13 @@ public class Purchase_order {
 
     public void setProductDescription(Set<Product_description> productDescription) {
         this.productDescription = productDescription;
+    }
+
+    public String getReference() {
+        return reference;
+    }
+
+    public void setReference(String reference) {
+        this.reference = reference;
     }
 }

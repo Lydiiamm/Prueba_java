@@ -27,7 +27,7 @@ public class Country {
      * @param countryName name of the countrys
      */
     public Country() {
-        super();
+
     }
 
     public Country(int id_country, String country_name, Set<Address> address) {

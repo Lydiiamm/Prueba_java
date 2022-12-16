@@ -21,7 +21,7 @@ public class Color {
     private Set<Product_description> productDescription;
 
     public Color() {
-        super();
+
     }
 
 

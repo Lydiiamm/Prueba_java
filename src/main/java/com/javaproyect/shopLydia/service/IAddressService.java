@@ -6,7 +6,7 @@ import java.util.List;
 
 public interface IAddressService {
 
-    Address save(Address address);
+    Address save(String cityName, Integer countryId);
     Address update(Address address);
     Address findById(Integer id);
     List<Address> findAll();

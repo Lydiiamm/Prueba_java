@@ -19,7 +19,7 @@ public class Order_status {
     private Set<Purchase_order> purchaseOrder;
 
     public Order_status() {
-        super();
+
     }
 
     /**

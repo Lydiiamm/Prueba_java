@@ -18,7 +18,7 @@ public class Payment_status {
     private Set<Purchase_order> purchaseOrder;
 
     public Payment_status() {
-        super();
+
     }
 
     /**

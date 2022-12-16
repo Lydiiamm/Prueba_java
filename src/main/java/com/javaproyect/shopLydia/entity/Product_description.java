@@ -30,21 +30,24 @@ public class Product_description {
     private Product product;
     @Column(name="stock", nullable=false, unique=false)
     private int stock;
+    @Column(name="reference", nullable=false, unique=false)
+    private String reference;
 
     @ManyToMany(mappedBy = "productDescription")
     @JsonIgnore
     private Set<Purchase_order> purchaseOrder;
 
     public Product_description() {
-        super();
+
     }
 
-    public Product_description(int id_productdescription, Size size, Color color, Product product, int stock, Set<Purchase_order> purchaseOrder) {
+    public Product_description(int id_productdescription, Size size, Color color, Product product, int stock, String reference, Set<Purchase_order> purchaseOrder) {
         this.id_productdescription = id_productdescription;
         this.size = size;
         this.color = color;
         this.product = product;
         this.stock = stock;
+        this.reference = reference;
         this.purchaseOrder = purchaseOrder;
     }
 
@@ -97,6 +100,14 @@ public class Product_description {
 
     public void setStock(int stock) {
         this.stock = stock;
+    }
+
+    public String getReference() {
+        return reference;
+    }
+
+    public void setReference(String reference) {
+        this.reference = reference;
     }
 
     public Set<Purchase_order> getPurchaseOrder() {

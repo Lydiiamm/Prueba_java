@@ -7,7 +7,7 @@ import com.javaproyect.shopLydia.entity.Purchase_order;
 import java.util.List;
 
 public interface IPurchaseOrder {
-    Purchase_order save(Purchase_order purchaseOrder);
+    Purchase_order save(String reference, Integer idAddress, Integer idOrderStatus, Integer idPaymentMethod, Integer idPaymentStatus, Integer idCustomer);
     Purchase_order update(Purchase_order purchaseOrder);
     Purchase_order findById(Integer id);
     List<Purchase_order> findAll();

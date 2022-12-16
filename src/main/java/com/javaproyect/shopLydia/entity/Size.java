@@ -20,7 +20,7 @@ public class Size {
     private Set<Product_description> productDescription;
 
     public Size() {
-        super();
+
     }
 
     /**

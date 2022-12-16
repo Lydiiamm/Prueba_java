@@ -11,10 +11,13 @@ import java.util.Optional;
 @Service
 public class CustomerService {
     @Autowired
-    public static CustomerRepository customerRepository;
+    public CustomerRepository customerRepository;
     
-    public static Customer save(Customer customer) {
+    public Customer save(Customer customer) {
         return customerRepository.save(customer);
+    }
+    public List<Customer> getAllCustomer(){
+        return (List<Customer>) customerRepository.findAll();
     }
     
     public Customer update(Customer customer) {
@@ -25,13 +28,7 @@ public class CustomerService {
         Optional<Customer> CustomerOptional = customerRepository.findById(id);
         return CustomerOptional.orElse(null);
     }
-
-    public static List<Customer> getAllCustomer() {
-        return (List<Customer>) customerRepository.findAll();
-    }
-
-
-    public static void delete(Integer id) {
+    public void delete(Integer id) {
         customerRepository.deleteById(id);
 
     }

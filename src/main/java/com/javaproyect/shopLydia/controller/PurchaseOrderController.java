@@ -1,5 +1,6 @@
 package com.javaproyect.shopLydia.controller;
 
+import com.javaproyect.shopLydia.controller.dto.PurOrAddDto;
 import com.javaproyect.shopLydia.entity.Purchase_order;
 import com.javaproyect.shopLydia.service.PurchaseOrderService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,8 +19,9 @@ public class PurchaseOrderController {
 
     //http://localhost:8080/api/purchaseOrder
     @PostMapping
-    public Purchase_order addPurchaseOrder(@RequestBody Purchase_order o){
-        return purchaseOrderService.save(o);
+    public Purchase_order addPurchaseOrder(@RequestBody PurOrAddDto o){
+        Purchase_order savedPurchaseOrder =purchaseOrderService.save(o.getReference(), o.getIdAddress(), o.getIdOrderStatus(), o.getIdPaymentStatus(),o.getIdPaymentMethod(), o.getIdCustomer());
+        return savedPurchaseOrder;
     }
 
     @PutMapping("/{purchaseOrderId}") //http://localhost:8080/api/purchaseOrder/10 PUT

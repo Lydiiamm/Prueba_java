@@ -19,7 +19,7 @@ public class Payment_method {
     private Set<Purchase_order> purchaseOrder;
 
     public Payment_method() {
-        super();
+
     }
 
     /**

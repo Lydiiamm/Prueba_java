@@ -38,7 +38,7 @@ public class Customer {
     Set<Address> addresses;
 
     public Customer() {
-        super();
+
     }
 
     public Customer(int id_customer, String customer_name, String customer_surname, Date birth, String email, String accountPassword, Set<Purchase_order> purchaseOrder, Set<Address> addresses) {

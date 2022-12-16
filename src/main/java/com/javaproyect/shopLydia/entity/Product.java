@@ -24,6 +24,9 @@ public class Product {
     @OneToMany(fetch = FetchType.EAGER, mappedBy = "product", cascade = CascadeType.ALL)
     private Set<Product_description> productDescription;
 
+    public Product() {
+    }
+
     /**
      * Constructor of the class product
      * @param idProduct identifier of the product

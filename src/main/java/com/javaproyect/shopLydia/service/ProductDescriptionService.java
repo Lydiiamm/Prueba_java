@@ -1,9 +1,7 @@
 package com.javaproyect.shopLydia.service;
 
-import com.javaproyect.shopLydia.entity.Payment_status;
-import com.javaproyect.shopLydia.entity.Product_description;
-import com.javaproyect.shopLydia.repository.PaymentStatusRepository;
-import com.javaproyect.shopLydia.repository.ProductDescriptionRepository;
+import com.javaproyect.shopLydia.entity.*;
+import com.javaproyect.shopLydia.repository.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -15,9 +13,32 @@ public class ProductDescriptionService {
 
     @Autowired
     private ProductDescriptionRepository productDescriptionRepository;
+    @Autowired
+    private ColorRepository colorRepository;
+    @Autowired
+    private SizeRepository sizeRepository;
+    @Autowired
+    private ProductRepository productRepository;
 
-    public Product_description save(Product_description productDescription) {
-        return productDescriptionRepository.save(productDescription);
+    public Product_description save(String reference, Integer idColor, Integer idSize, Integer idProduct){
+        Optional<Color> foundColor =colorRepository.findById(idColor);
+        Optional<Size> foundSize =sizeRepository.findById(idSize);
+        Optional<Product> foundProduct =productRepository.findById(idProduct);
+
+        if (foundProduct.isPresent()) {
+            Product product = foundProduct.get();
+            Color color = foundColor.get();
+            Size size =foundSize.get();
+
+            Product_description productDescription = new Product_description();
+            productDescription.setReference(reference);
+            productDescription.setColor(color);
+            productDescription.setSize(size);
+            productDescription.setProduct(product);
+            return productDescriptionRepository.save(productDescription);
+        }
+
+        return null;
     }
 
     public List<Product_description> getAllProductDescription(){

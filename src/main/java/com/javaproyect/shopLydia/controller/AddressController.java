@@ -1,6 +1,7 @@
 package com.javaproyect.shopLydia.controller;
 
 
+import com.javaproyect.shopLydia.controller.dto.AdressDto;
 import com.javaproyect.shopLydia.entity.Address;
 import com.javaproyect.shopLydia.service.AddressService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,15 +20,15 @@ public class AddressController {
 
     //http://localhost:8080/api/address
     @PostMapping
-    public Address addAddress(@RequestBody Address a){
-
-        return addressService.save(a);
+    public Address addAddress(@RequestBody AdressDto a){
+        Address savedAddress = addressService.save(a.getCity(), a.getIdCountry());
+        return savedAddress;
     }
 
     @PutMapping("/{addressId}") //http://localhost:8080/api/address/10 PUT
-    public Address updateAddress(@RequestBody Address a){
-
-        return addressService.save(a);
+    public Address updateAddress(@RequestBody AdressDto a){
+        Address savedAddress = addressService.save(a.getCity(), a.getIdCountry());
+        return savedAddress;
     }
 
     @GetMapping //http://localhost:8080/api/address GET
