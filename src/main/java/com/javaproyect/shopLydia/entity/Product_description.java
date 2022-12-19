@@ -29,14 +29,22 @@ public class Product_description {
     @JoinColumn(name = "product")
     @JsonIgnore
     private Product product;
-    @Column(name="stock", nullable=false, unique=false)
+    @Column(name = "stock", nullable = false, unique = false)
     private int stock;
-    @Column(name="reference", nullable=false, unique=false)
+    @Column(name = "reference", nullable = false, unique = false)
     private String reference;
 
-    @ManyToMany(mappedBy = "productDescription")
-    @JsonIgnore
-    private Set<Purchase_order> purchaseOrder;
+    //    @ManyToMany(mappedBy = "productDescription")
+//    @JsonIgnore
+//    private Set<Purchase_order> purchaseOrder;
+    @ManyToMany
+    @JoinTable(
+            name = "good",
+            joinColumns = @JoinColumn(name = "id_productdescription",
+                    nullable = false),
+            inverseJoinColumns = @JoinColumn(name = "id_order")
+    )
+    Set<Purchase_order> purchaseOrder;
 
     public Product_description() {
 
@@ -54,13 +62,13 @@ public class Product_description {
 
     /**
      * Constructor of the class product_description
+     *
      * @param idProductDescription indentifier of a product with al its characteristics
-     * @param idSize identifier of the size
-     * @param idColor identifier of the color
-     * @param idProduct identifier of the product
-     * @param stock quantity on stock
+     * @param idSize               identifier of the size
+     * @param idColor              identifier of the color
+     * @param idProduct            identifier of the product
+     * @param stock                quantity on stock
      */
-
 
 
     public int getId_productdescription() {
@@ -118,7 +126,8 @@ public class Product_description {
     public void setPurchaseOrder(Set<Purchase_order> purchaseOrder) {
         this.purchaseOrder = purchaseOrder;
     }
-    public void addOrder( Purchase_order order) {
+
+    public void addOrder(Purchase_order order) {
         if (this.purchaseOrder == null) {
             this.purchaseOrder = new HashSet<>();
         }

@@ -43,14 +43,18 @@ public class Purchase_order {
     @JsonIgnore
     private Order_status orderStatus;
 
-    @ManyToMany
-    @JoinTable(
-            name = "good",
-            joinColumns = @JoinColumn(name = "id_order",
-                    nullable = false),
-            inverseJoinColumns = @JoinColumn(name = "id_productdescription")
-    )
-    Set<Product_description> productDescription;
+//    @ManyToMany
+//    @JoinTable(
+//            name = "good",
+//            joinColumns = @JoinColumn(name = "id_order",
+//                    nullable = false),
+//            inverseJoinColumns = @JoinColumn(name = "id_productdescription")
+//    )
+//    Set<Product_description> productDescription;
+
+    @ManyToMany(mappedBy = "purchaseOrder")
+    @JsonIgnore
+    private Set<Product_description> productDescription;
 
     public Purchase_order() {
 

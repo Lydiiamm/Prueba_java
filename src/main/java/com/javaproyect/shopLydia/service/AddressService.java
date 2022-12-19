@@ -32,7 +32,7 @@ public class AddressService implements  IAddressService{
 
             Address address = new Address();
             address.setCity(cityName);
-            address.setCountry(country);
+            address.setCountry_id(country);
             Address savedAddress = addressRepository.save(address);
             Optional<Customer> customer =customerRepository.findById(customerId);
             customer.ifPresent(customer1 -> {

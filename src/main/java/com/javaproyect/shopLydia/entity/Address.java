@@ -75,8 +75,6 @@ public class Address {
      */
 
 
-
-
     public int getId_address() {
         return id_address;
     }
@@ -85,12 +83,12 @@ public class Address {
         this.id_address = id_address;
     }
 
-    public Country getCountry() {
+    public Country getCountry_id() {
         return country_id;
     }
 
-    public void setCountry(Country country) {
-        this.country_id = country;
+    public void setCountry_id(Country country_id) {
+        this.country_id = country_id;
     }
 
     public String getCity() {
