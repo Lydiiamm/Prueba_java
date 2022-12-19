@@ -6,6 +6,7 @@ import com.javaproyect.shopLydia.service.CountryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.sql.SQLIntegrityConstraintViolationException;
 import java.util.List;
 
 @RestController
@@ -17,7 +18,7 @@ public class CountryController {
 
     //http://localhost:8080/api/country
     @PostMapping
-        public Country addCountry(@RequestBody Country c){
+    public Country addCountry(@RequestBody Country c){
         return countryService.save(c);
     }
 

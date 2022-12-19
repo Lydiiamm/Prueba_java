@@ -34,7 +34,7 @@ public class CountryService implements ICountryService{
 
     @Override
     public List<Country> findAll() {
-        return null;
+        return (List<Country>) countryRepository.findAll();
     }
     @Override
     public void delete(Integer id) {

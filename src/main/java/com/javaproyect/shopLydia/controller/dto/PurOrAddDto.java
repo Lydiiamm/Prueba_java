@@ -8,9 +8,20 @@ public class PurOrAddDto {
     private Integer idPaymentStatus;
     private Integer idPaymentMethod;
     private Integer idCustomer;
+    private Integer idProduct;
 
 
     public PurOrAddDto() {
+    }
+
+    public PurOrAddDto(String reference, Integer idAddress, Integer idOrderStatus, Integer idPaymentStatus, Integer idPaymentMethod, Integer idCustomer, Integer idProduct) {
+        this.reference = reference;
+        this.idAddress = idAddress;
+        this.idOrderStatus = idOrderStatus;
+        this.idPaymentStatus = idPaymentStatus;
+        this.idPaymentMethod = idPaymentMethod;
+        this.idCustomer = idCustomer;
+        this.idProduct = idProduct;
     }
 
     public String getReference() {
@@ -59,5 +70,13 @@ public class PurOrAddDto {
 
     public void setIdCustomer(Integer idCustomer) {
         this.idCustomer = idCustomer;
+    }
+
+    public Integer getIdProduct() {
+        return idProduct;
+    }
+
+    public void setIdProduct(Integer idProduct) {
+        this.idProduct = idProduct;
     }
 }

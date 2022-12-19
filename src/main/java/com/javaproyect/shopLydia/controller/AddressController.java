@@ -21,13 +21,13 @@ public class AddressController {
     //http://localhost:8080/api/address
     @PostMapping
     public Address addAddress(@RequestBody AdressDto a){
-        Address savedAddress = addressService.save(a.getCity(), a.getIdCountry());
+        Address savedAddress = addressService.save(a.getCity(), a.getIdCountry(), a.getIdCustomer());
         return savedAddress;
     }
 
     @PutMapping("/{addressId}") //http://localhost:8080/api/address/10 PUT
     public Address updateAddress(@RequestBody AdressDto a){
-        Address savedAddress = addressService.save(a.getCity(), a.getIdCountry());
+        Address savedAddress = addressService.save(a.getCity(), a.getIdCountry(), a.getIdCustomer());
         return savedAddress;
     }
 

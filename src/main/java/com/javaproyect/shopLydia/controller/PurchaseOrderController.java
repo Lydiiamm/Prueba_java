@@ -20,7 +20,7 @@ public class PurchaseOrderController {
     //http://localhost:8080/api/purchaseOrder
     @PostMapping
     public Purchase_order addPurchaseOrder(@RequestBody PurOrAddDto o){
-        Purchase_order savedPurchaseOrder =purchaseOrderService.save(o.getReference(), o.getIdAddress(), o.getIdOrderStatus(), o.getIdPaymentStatus(),o.getIdPaymentMethod(), o.getIdCustomer());
+        Purchase_order savedPurchaseOrder =purchaseOrderService.save(o.getReference(), o.getIdAddress(), o.getIdOrderStatus(), o.getIdPaymentStatus(),o.getIdPaymentMethod(), o.getIdCustomer(), o.getIdProduct());
         return savedPurchaseOrder;
     }
 

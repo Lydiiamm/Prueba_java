@@ -24,8 +24,10 @@ public class PurchaseOrderService implements IPurchaseOrder{
     private PaymentMethodRepository paymentMethodRepository;
     @Autowired
     private CustomerRepository customerRepository;
+    @Autowired
+    private ProductDescriptionRepository productDescriptionRepository;
 
-    public Purchase_order save(String reference, Integer idAddress, Integer idOrderStatus, Integer idPaymentMethod, Integer idPaymentStatus, Integer idCustomer){
+    public Purchase_order save(String reference, Integer idAddress, Integer idOrderStatus, Integer idPaymentMethod, Integer idPaymentStatus, Integer idCustomer, Integer idProduct){
         Optional<Address> foundAddress =addressRepository.findById(idAddress);
         Optional<Order_status> foundOrderStatus =orderStatusRepository.findById(idOrderStatus);
         Optional<Payment_status> foundPaymentStatus =paymentStatusRepository.findById(idPaymentStatus);
@@ -47,7 +49,14 @@ public class PurchaseOrderService implements IPurchaseOrder{
             purchaseOrder.setPaymentStatus(paymentStatus);
             purchaseOrder.setPaymentMethod(paymentMethod);
             purchaseOrder.setCustomer(customer);
-            return purchaseOrderRepository.save(purchaseOrder);
+            Purchase_order savedOrder= purchaseOrderRepository.save(purchaseOrder);
+            Optional<Product_description> productDescription = productDescriptionRepository.findById(idProduct);
+            productDescription.ifPresent(productDescription1 -> {
+                productDescription1.addOrder(savedOrder);
+                productDescriptionRepository.save(productDescription1);
+            });
+
+            return savedOrder;
         }
 
         return null;

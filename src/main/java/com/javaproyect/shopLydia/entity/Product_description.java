@@ -3,6 +3,7 @@ package com.javaproyect.shopLydia.entity;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
+import java.util.HashSet;
 import java.util.Set;
 
 /**
@@ -116,5 +117,11 @@ public class Product_description {
 
     public void setPurchaseOrder(Set<Purchase_order> purchaseOrder) {
         this.purchaseOrder = purchaseOrder;
+    }
+    public void addOrder( Purchase_order order) {
+        if (this.purchaseOrder == null) {
+            this.purchaseOrder = new HashSet<>();
+        }
+        this.purchaseOrder.add(order);
     }
 }

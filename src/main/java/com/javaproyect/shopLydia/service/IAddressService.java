@@ -6,10 +6,10 @@ import java.util.List;
 
 public interface IAddressService {
 
-    Address save(String cityName, Integer countryId);
+    Address save(String cityName, Integer countryId, Integer customerId);
     Address update(Address address);
     Address findById(Integer id);
-    List<Address> findAll();
+    Iterable<Address> findAll();
     List<Address> getAllAddress();
     void delete(Integer id);
 }

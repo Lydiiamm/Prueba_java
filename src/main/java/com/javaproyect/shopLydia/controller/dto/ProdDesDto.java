@@ -9,6 +9,13 @@ public class ProdDesDto {
     public ProdDesDto() {
     }
 
+    public ProdDesDto(String reference, Integer idProduct, Integer idColor, Integer idSize) {
+        this.reference = reference;
+        this.idProduct = idProduct;
+        this.idColor = idColor;
+        this.idSize = idSize;
+    }
+
     public String getReference() {
         return reference;
     }

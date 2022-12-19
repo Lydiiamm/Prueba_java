@@ -37,6 +37,7 @@ public class Address {
     private String apartment;
 
     @OneToMany(fetch = FetchType.EAGER, mappedBy = "address", cascade = CascadeType.ALL)
+    @JsonIgnore
     private Set<Purchase_order> purchaseOrder;
 
     @ManyToMany(mappedBy = "addresses")
