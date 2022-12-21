@@ -1,0 +1,9 @@
+insert into payment_method values ("1","cash");
+insert into payment_method values ("2","card");
+insert into payment_status values ("1","paid");
+insert into payment_status values ("2","paid pending");
+insert into order_status values ("1","store");
+insert into order_status values ("2","left the store");
+insert into order_status values ("3","on its way");
+insert into order_status values ("4","on delivery");
+insert into order_status values ("5","delivered");

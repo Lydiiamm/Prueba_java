@@ -19,7 +19,9 @@ public class CustomerService {
     public List<Customer> getAllCustomer(){
         return (List<Customer>) customerRepository.findAll();
     }
-    
+    public List<Customer> login(String email){
+        return (List<Customer>) customerRepository.findByEmail(email);
+    }
     public Customer update(Customer customer) {
         return customerRepository.save(customer);
     }

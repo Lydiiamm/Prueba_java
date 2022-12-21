@@ -15,7 +15,7 @@ public class Country {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_country")
     private int id_country;
-    @Column(name="country_name", unique=true)
+    @Column(name="country_name", unique =true)
     private String country_name;
 
     @OneToMany(fetch = FetchType.EAGER, mappedBy = "country_id", cascade = CascadeType.ALL)

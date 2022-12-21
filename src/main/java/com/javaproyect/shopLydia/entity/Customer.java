@@ -1,29 +1,33 @@
 package com.javaproyect.shopLydia.entity;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import javax.persistence.*;
 import java.util.Date;
 import java.util.HashSet;
+import java.util.Objects;
 import java.util.Set;
 
 /**
  * Class customer, it has all the data needed for the sign up
  */
 @Entity
-@Table(name = "customer")
+@Table(name = "customer", uniqueConstraints = {@UniqueConstraint(columnNames = "email")})
 public class Customer {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_customer")
     private int id_customer;
-    @Column(name = "customer_name", length = 50, nullable = false, unique = false)
+    @Column(name = "customer_name")
     private String customer_name;
-    @Column(name = "customer_surname", length = 50, nullable = true, unique = false)
+    @Column(name = "customer_surname")
     private String customer_surname;
-    @Column(name = "birth", nullable = false, unique = false)
+    @Column(name = "birth")
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date birth;
-    @Column(name = "email", length = 50, nullable = false, unique = false)
+    @Column(name = "email")
     private String email;
-    @Column(name = "accountPassword", length = 50, nullable = false, unique = false)
+    @Column(name = "accountPassword")
     private String accountPassword;
 
     @OneToMany(fetch = FetchType.EAGER, mappedBy = "customer", cascade = CascadeType.ALL)
@@ -130,5 +134,18 @@ public class Customer {
 
     public void setPurchaseOrder(Set<Purchase_order> purchaseOrder) {
         this.purchaseOrder = purchaseOrder;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Customer)) return false;
+        Customer customer = (Customer) o;
+        return getEmail().equals(customer.getEmail()) && getAccountPassword().equals(customer.getAccountPassword());
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(getEmail(), getAccountPassword());
     }
 }
